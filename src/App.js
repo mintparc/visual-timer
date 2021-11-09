@@ -1,11 +1,10 @@
-import './App.css';
+import './App.css'
+import ModeToggle from './components/ModeToggle'
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
-  );
+    <ModeToggle />
+  )
 }
 
-export default App;
+export default App
