@@ -1,9 +1,29 @@
-import './App.css'
+import { useState } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import { light, dark } from './styles/theme'
+import GlobalStyle from './styles/GlobalStyle'
 import ModeToggle from './components/ModeToggle'
+import Timer from './components/VisualTimer/Timer'
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 function App() {
+  const [theme, setTheme] = useState(light)
+  const handleToggleLightMode = () => {
+    setTheme(theme === light ? dark : light)
+  }
+
   return (
-    <ModeToggle />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <ModeToggle handleToggleLightMode={handleToggleLightMode} />
+        <Timer />
+      </Container>
+    </ThemeProvider>
   )
 }
 
