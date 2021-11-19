@@ -9,7 +9,7 @@ export const light = {
 }
 
 export const dark = {
-  toggleLeft: '50%',
+  toggleLeft: '60%',
   toggleColor: '#5c6dc7',
   backgroundColor: '#262626',
   buttonColor: '#686868',

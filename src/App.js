@@ -6,8 +6,11 @@ import ModeToggle from './components/ModeToggle'
 import Timer from './components/VisualTimer/Timer'
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 400px;
+  margin: 83px auto 0;
 `
 
 function App() {
