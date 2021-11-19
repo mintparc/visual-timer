@@ -5,7 +5,7 @@ const Clock = styled.div`
   position: relative;
   width: 336px;
   height: 336px;
-  margin: 159px auto 0;
+  margin: 42px auto 0;
   padding: 32px;
   border-radius: 10px;
   background: ${({ theme }) => theme.clockColor};
@@ -13,8 +13,8 @@ const Clock = styled.div`
 
 const CenterPoint = styled.div`
   position: absolute;
-  width: 31.5px;
-  height: 31.5px;
+  width: 40px;
+  height: 40px;
   top: 50%;
   left: 50%;
   border-radius: 50%;
@@ -24,6 +24,9 @@ const CenterPoint = styled.div`
 `
 
 const VisualTimer = styled.div`
+  position: absolute;
+  width: 336px;
+  height: 336px;
   border-radius: 50%;
   background: ${({ theme }) => theme.spinnerColor};
 `
@@ -38,13 +41,14 @@ const Spinner = styled.path`
   stroke: ${({ theme }) => theme.backgroundColor};
 `
 
-const minutes = 0.1
+let timeLeft = 0
 let α = 0
 const π = Math.PI
-let time = ((minutes * 60) / 360) * 1000
 
 function Timer() {
+  const [minutes, setMinutes] = useState(0.5)
   const [d, setD] = useState(null)
+  const time = ((minutes * 60) / 360) * 1000
 
   const draw = () => {
     α++
@@ -60,12 +64,16 @@ function Timer() {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      return setD(draw())
+      timeLeft += 1
+      setD(draw())
+      if (timeLeft === 360) {
+        alert('time is up ! ✨')
+        clearTimeout(timeout)
+      }
     }, time)
-    if (timeout === 364) {
-      clearTimeout(timeout)
-    }
   }, [d])
+
+  console.log(new Date(), timeLeft, time)
 
   return (
     <Clock>
