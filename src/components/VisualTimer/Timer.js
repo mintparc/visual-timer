@@ -73,8 +73,6 @@ function Timer() {
     }, time)
   }, [d])
 
-  console.log(new Date(), timeLeft, time)
-
   return (
     <Clock>
       <CenterPoint />

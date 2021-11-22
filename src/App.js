@@ -4,6 +4,7 @@ import { light, dark } from './styles/theme'
 import GlobalStyle from './styles/GlobalStyle'
 import ModeToggle from './components/ModeToggle'
 import Timer from './components/VisualTimer/Timer'
+import Controll from './components/VisualTimer/Controll'
 
 const Container = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ function App() {
       <Container>
         <ModeToggle handleToggleLightMode={handleToggleLightMode} />
         <Timer />
+        <Controll />
       </Container>
     </ThemeProvider>
   )
