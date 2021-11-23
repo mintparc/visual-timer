@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState, useRef } from 'react'
 import styled from 'styled-components'
 
-const Controller = styled.section`
+const Controll = styled.section`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -38,14 +38,27 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-function Controll() {
+function Controller() {
+  let minutesInput = useRef()
+  const [minutes, setMinutes] = useState(null)
+
+  const handleStart = () => {
+    const minutesValue = minutesInput.current.value
+    alert(minutesValue)
+    setMinutes(minutesValue)
+  }
+
+  const handleClear = () => {
+    setMinutes(0)
+  }
+
   return (
-    <Controller>
-      <Minutes placeholder='Min' />
-      <Button>Start</Button>
-      <Button>Clear</Button>
-    </Controller>
+    <Controll>
+      <Minutes placeholder='Min' ref={minutesInput} />
+      <Button onClick={handleStart}>Start</Button>
+      <Button onClick={handleClear}>Clear</Button>
+    </Controll>
   )
 }
 
-export default Controll
+export default Controller
